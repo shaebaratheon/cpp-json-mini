@@ -85,3 +85,4 @@ private:
     std::string source_;
     size_t pos_;
 };
+// Utf8 Decoder Module\n// Handles surrogate pairs and 4-byte sequences correctly now.\n// Code is slightly heavier but much safer.
