@@ -37,6 +37,8 @@ public:
                 tokens.push_back({TokenType::STRING, readString()});
             } else if (isdigit(c) || c == '-') {
                 tokens.push_back({TokenType::NUMBER, readNumber()});
+            } else if (isalpha(c)) {
+                tokens.push_back(readKeyword());
             } else {
                 // Unknown character, skip for this toy version
                 pos_++;
@@ -63,6 +65,21 @@ private:
             result += source_[pos_++];
         }
         return result;
+    }
+
+    Token readKeyword() {
+        std::string result;
+        while (pos_ < source_.length() && isalpha(source_[pos_])) {
+            result += source_[pos_++];
+        }
+        
+        if (result == "true" || result == "false") {
+            return {TokenType::BOOLEAN, result};
+        } else if (result == "null") {
+            return {TokenType::NUL, result};
+        }
+        // Fallback or error
+        return {TokenType::END, result};
     }
 
     std::string source_;

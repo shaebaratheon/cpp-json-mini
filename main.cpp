@@ -1,7 +1,7 @@
 #include "json_mini.hpp"
 
 int main() {
-    std::string json = "{\"name\": \"MiniJSON\", \"version\": 1.0}";
+    std::string json = "{\"name\": \"MiniJSON\", \"active\": true, \"data\": null}";
     
     JsonTokenizer tokenizer(json);
     auto tokens = tokenizer.tokenize();
