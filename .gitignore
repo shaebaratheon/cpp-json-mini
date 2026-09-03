@@ -1,4 +1,5 @@
+bin/
 *.o
-*.out
-build/
-.vscode/
+*.a
+*.so
+.DS_Store
